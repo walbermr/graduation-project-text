@@ -1,0 +1,56 @@
+\chapter{Methodology}
+As first objective, the dataset will be created using the feature extractor developed by 
+\cite{rasthofer2014machine}. The extractor creates meaningful information using the Android methods names and 
+their real implementation in the Android API. As result, the extractor gives the method class, if has been hand 
+annotaded, and a list of features. These features are semantic and syntactic features, containing information about 
+the method name, parameters, return type, method and classes modifiers, class modifiers, if exists data flow in the 
+method return or parameters and the required permissions.
+
+The extractor will be used in many Android APIs as possible, since there are a low quantity of hand annotated 
+methods, it is important to extract as many methods from classes as possible. It is possible to have duplicated 
+methods at the end of this evaluation due to backward compatibility, so, methods from older APIs will be 
+overwritten.
+
+The methods used in the comparison will be SVM, Naive Bayes, Decision Trees, MLP, KNN, and ensemble classifications 
+methods, which will be evaluated in 30 datasets sampled from the original. Each of these datasets are 
+subdivided into train dataset and test dataset, containing 80\% of the original dataset for model training and 20\% 
+for test the model effectiveness. They must maintain the classes proportion observed in the original dataset, if 
+the original has 45\% of source methods, the train and test must have a proportion close to that. Create these 
+datasets are important to make a Hypothesis Test, this help to statically evaluate if a classifier is really 
+effective when applied in this dataset. The proposed evaluation flow is shown in figure \ref{flow}.
+
+\begin{multicols}{2}%
+    \noindent%
+    {%
+    \begin{equation} \label{precision} precision = \frac{TP}{TP+FP} \end{equation}%
+    \begin{equation} \label{accuracy} accuracy = \frac{TP+TN}{TP+TN+FP+FN} \end{equation}%
+    }%
+    {%
+    \begin{equation} \label{recall} recall = \frac{TP}{TP+FN} \end{equation}%
+    \begin{equation} \label{f1} F1 = \frac{2 \times recall \times precision}{recall + precision} \end{equation}%
+    }%
+\end{multicols}
+
+Each classifier will be evaluated using precision, accuracy, recall and F1 score. The precision, equation 
+\ref{precision}, is the ratio of correctly predictions to the total predictions done. Accuracy, equation 
+\ref{accuracy}, is the ratio of correctly true predictions to the total of true predictions. Recall, equation 
+\ref{recall} is the ratio of correctly positive predictions to all the predictions of a class. F1, equation 
+\ref{f1}, score represents the harmonic mean between precision and recall \cite{sasaki2007truth}.
+
+We can rewrite precision, accuracy, recall and F1 score in the equations above, using true positives (TP), true 
+negatives (TN), false positives (FP) and false negatives (FN). True positives are all instances of a class $C$ that 
+are correctly classified. True negatives are all instances that do not belong to $C$ and are correctly classified. 
+False positives of a class $C$ are the instances of other classes that has been classified as $C$. False negatives 
+are instances of $C$ that has been classified as not belonging to $C$.
+
+\begin{figure}[!h]
+    \begin{center}
+        \input{proposal/flow.tex}
+    \end{center}
+    \caption{%
+        Overview of the proposed evaluation flow. First, the feature extractor uses Android Methods and %
+        Android APIs to create a dataset, which will be sampled into other 30 different datasets that will be used %
+        to evaluate the Classifiers.%
+    }\label{flow}
+\end{figure}
+

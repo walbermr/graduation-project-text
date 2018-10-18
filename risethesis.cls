@@ -46,6 +46,9 @@
 \DeclareOption{bsc}{%
   \let\@degreetype=0}
 
+\DeclareOption{bsc_prop}{%
+  \let\@degreetype=5}
+
 \DeclareOption{msc}{%
   \let\@degreetype=1}
 
@@ -152,6 +155,7 @@
 \if\@language0
   \RequirePackage[portuguese]{babel}
   \gdef\@bachelordissertation{Trabalho de Graduação}
+  \gdef\@bachelorproposal{Proposta de Trabalho de Graduação}
   \gdef\@mastersdissertation{Dissertação de Mestrado}
   \gdef\@phdqualifying{Monografia de Qualificação}
   \gdef\@phdproposal{Proposta de Tese de Doutorado}
@@ -200,6 +204,7 @@
   \else\if\@language1
   \RequirePackage[english]{babel}
   \gdef\@bachelordissertation{B.Sc. Dissertation}
+  \gdef\@bachelorproposal{B.Sc. Dissertation Proposal}
   \gdef\@mastersdissertation{M.Sc. Dissertation}
   \gdef\@phdqualifying{Ph.D. Thesis Qualification}
   \gdef\@phdproposal{Ph.D. Proposal}
@@ -350,7 +355,9 @@
     \@phdproposal
   \else\if\@degreetype4
     \@phdthesis
-  \fi\fi\fi\fi\fi}
+  \else\if\@degreetype5
+    \@bachelorproposal
+  \fi\fi\fi\fi\fi\fi}
 
 \def\@degree{%
   \if\@degreetype0
@@ -509,10 +516,11 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \thispagestyle{empty}
   \begin{center}
   \includegraphics[scale=0.65]{cinlogo} \\
-  \vfill
+  \vspace{60mm}
   \begin{center}
     {\normalsize\bfseries{\MakeUppercase{\@title}}}
     \vskip1\baselineskip
+    \vspace{60mm}
     \if\@language0
         {\normalsize \bfseries{Por}}
     \else
@@ -523,15 +531,14 @@ requirements for the degree of \@degree\ in \@majorfielden.
     \vskip1\baselineskip
     {{\normalsize \bfseries{\@texttype}}}\\
   \end{center}
-  \vspace{0.2cm}
-  \includegraphics[width=1cm]{ufpelogo} \\
+  \includegraphics[width=1.25cm]{ufpelogo} \\
   \if\@language0
     {\fontfamily{times}\selectfont \tiny \@universitypt\\}
   \else
     {\fontfamily{times}\selectfont \tiny \@universityen\\}
   \fi
-  {\fontfamily{times}\selectfont \tiny posgraduacao@cin.ufpe.br\\}
-  {\fontfamily{times}\selectfont \tiny \url{www.cin.ufpe.br/~posgraduacao}\\}
+  {\fontfamily{times}\selectfont \tiny secgrad@cin.ufpe.br\\}
+  {\fontfamily{times}\selectfont \tiny \url{www.cin.ufpe.br/~secgrad}\\}
   \vskip\baselineskip
   \vskip\baselineskip
   \@address/\@date
@@ -833,7 +840,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 % %% make the equation numbers have little ovals around them
- \def\tagform@#1{\maketag@@@{\cornersize{0.8}\ovalbox{\ignorespaces\sffamily{#1}\unskip\@@italiccorr}}}
+\def\tagform@#1{\maketag@@@{\cornersize{0.8}\ovalbox{\ignorespaces\sffamily{#1}\unskip\@@italiccorr}}}
 % 
 % %% Load up PS insertion package
  \PScommands

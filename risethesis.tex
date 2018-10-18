@@ -4,7 +4,7 @@
 %% http://risetemplate.sourceforge.net
 %%
 %% (c) 2012 Yguaratã Cerqueira Cavalcanti (yguarata@gmail.com)
-%%          Vinicius Cardoso Garcia (vcg@cin.ufpe.br)
+%%          Vinicius Cardoso Garcia (vcg@cin.ufpe.br)
 %%
 %% This document was initially based on UFPEThesis template, from Paulo Gustavo
 %% S. Fonseca.
@@ -69,21 +69,53 @@
 %%          \citep (from natbib) -- To cite a reference between parenthesis
 %%          citationblock environment -- To produce direct citation blocks according to the ABNT
 
-\documentclass[pt,twoside,onehalfspacing,phd]{risethesis}
-
+\documentclass[en,oneside,onehalfspacing,bsc_prop]{risethesis}
 \usepackage{colortbl}
 \usepackage{color}
-\usepackage[table]{xcolor}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{microtype}
 \usepackage{bibentry}
 \usepackage{subfigure}
 \usepackage{multirow}
+\usepackage{multicol}
 \usepackage{rotating}
 \usepackage{booktabs}
 \usepackage{pdfpages}
 \usepackage{caption}
 \usepackage{lipsum}
 \usepackage{sectsty}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    matrix,shapes.symbols}
+\tikzset{
+>=stealth',
+  punktchain/.style={
+    rectangle, 
+    rounded corners, 
+    % fill=black!10,
+    draw=black, very thick,
+    text width=7em, 
+    minimum height=3em, 
+    text centered, 
+    on chain},
+  line/.style={draw, thick, <-},
+  element/.style={
+    tape,
+    top color=white,
+    bottom color=blue!50!black!60!,
+    minimum width=8em,
+    draw=blue!40!black!90, very thick,
+    text width=10em, 
+    minimum height=3.5em, 
+    text centered, 
+    on chain},
+  every join/.style={->, thick,shorten >=1pt},
+  decoration={brace},
+  tuborg/.style={decorate},
+  tubnode/.style={midway, right=2pt},
+}
 
 \captionsetup[table]{position=top,justification=centering,width=.85\textwidth,labelfont=bf,font=footnotesize}
 \captionsetup[lstlisting]{position=top,justification=centering,width=.85\textwidth,labelfont=bf,font=footnotesize}
@@ -112,19 +144,18 @@
 \departmentpt{Centro de Informática}
 \departmenten{Center for Informatics}
 
-\programpt{Pós-graduação em Ciência da Computação}
-\programen{Graduate in Computer Science}
+\programpt{Graduação em Engenharia da computaç}
+\programen{Undergraduate in Computer Engineering}
 
-\majorfieldpt{Ciência da Computação}
-\majorfielden{Computer Science}
+\majorfieldpt{Engenharia da computação}
+\majorfielden{Computer Engineering}
 
-\title{An Automated Approach to Assign Software Change Requests}
+\title{Evaluation of Machine Learning Algorithms in the Categorization of Android API Methods into Sources and Sinks}
 
-\date{2014}
+\date{2018}
 
-\author{Yguaratã Cerqueira Cavalcanti}
-\adviser{Silvio Romero de Lemos Meira}
-\coadviser{Eduardo Santana de Almeida}
+\author{Walber de Macedo Rodrigues}
+\adviser{George Darmiton da Cunha Cavalcanti}
 
 % Macros (defines your own macros here, if needed)
 \def\x{\checkmark}
@@ -135,27 +166,29 @@
 
 \frontpage
 
-\presentationpage
+%\presentationpage
 
-\begin{fichacatalografica}
-	\FakeFichaCatalografica % Comment this line when you have the correct file
+%\begin{fichacatalografica}
+%	\FakeFichaCatalografica % Comment this line when you have the correct file
 %     \includepdf{fig_ficha_catalografica.pdf} % Uncomment this
-\end{fichacatalografica}
+%\end{fichacatalografica}
 
-\banca
+%\banca
 
-\begin{dedicatory}
-I dedicate this thesis to all my family, friends and professors who gave me the
-necessary support to get here.
-\end{dedicatory}
+%\begin{dedicatory}
+%I dedicate this thesis to all my family, friends and professors who gave me the
+%necessary support to get here.
+%\end{dedicatory}
 
-\acknowledgements
-\input{agradecimentos}
+%\acknowledgements
+%\input{agradecimentos}
 
-\begin{epigraph}[]{Poul Anderson}
-I have yet to see any problem, however complicated, which, when looked at in the
-right way, did not become still more complicated.
-\end{epigraph}
+%\begin{epigraph}[]{Poul Anderson}
+%I have yet to see any problem, however complicated, which, when looked at in the
+%right way, did not become still more complicated.
+%\end{epigraph}
+
+\let\cleardoublepage\clearpage
 
 \resumo
 % Escreva seu resumo no arquivo resumo.tex
@@ -185,20 +218,31 @@ right way, did not become still more complicated.
 
 \mainmatter
 
+% Uncomment to graduation
 \include{chapters/introduction}
 \include{chapters/background}
-\include{chapters/desenv}
+\include{chapters/models/intro}
+\include{chapters/results}
 \include{chapters/conclusion}
 
-% References
+
+% Uncomment to proposal
+% \include{proposal/introduction}
+% \include{proposal/objectives}
+% \include{proposal/methodology}
+% \include{proposal/schedule}
+% \include{proposal/avaliadores}
 
 \begin{references}
   \bibliography{references}
 \end{references}
 
+% References
+
+
 % Appendix
 
-\theappendix
-\include{appendix/mapping-study}
+%\theappendix
+%\include{appendix/mapping-study}
 
 \end{document}
