@@ -1,6 +1,6 @@
-PWD f:/Projetos/risethesis
+PWD f:/Projetos/graduation-project-text
 INPUT C:/Users/walbe/AppData/Local/MiKTeX/2.9/miktex/data/le/pdftex/pdflatex.fmt
-INPUT f:/Projetos/risethesis/risethesis.tex
+INPUT f:/Projetos/graduation-project-text/risethesis.tex
 OUTPUT risethesis.log
 INPUT risethesis.cls
 INPUT risethesis.cls
