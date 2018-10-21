@@ -1,6 +1,6 @@
 \section{Monolithic}\label{mono}
 
-For the Monolithic classifiers, we have the Decision Tree, discussed in section \ref{decisiontree_section}, Multinomial and Bernoulli Naive Bayes \ref{naive_bayes_section}, K-Nearest Neighbor (KNN) discussed in section \ref{knn_section}, Support Vector Machine (SVM) \ref{svm_section}, Multi-Layer Perceptron \ref{mlp_section} and Random Forest \ref{rf_section}.
+For the Monolithic classifiers, we have the Decision Tree, Multinomial and Bernoulli Naive Bayes, K-Nearest Neighbor (KNN), Support Vector Machine (SVM) , Multi-Layer Perceptron  and Random Forest.
 
 The setup for Decision Tree is the split strategy to select the most relevant feature with Gini Impurity as criterion. In Multinomial and Bernoulli Naive Bayes we choose a $\alpha$ of 1. For KNN, we use 5 as the number of neighbors and a uniform weight for the neighbor points. For MLP we used L2 regularization with alpha of $10^{-4}$, 1000 neurons in hidden layer, no early stopping, activation layer as relu, max of 1000 iterations and tolerance of $10^{-4}$. For Random Forests we are using 10 estimators, the minimum samples to split is 2 and Gini Impurity as criterion.
 

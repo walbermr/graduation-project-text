@@ -6,9 +6,9 @@ The base classifier classes used are Perceptron and Decision Tree, in all ensemb
 
 For ensemble algorithms, the KNORAE parameters were KNN to estimate the classifier competence using 7 neighbors, with no dynamic pruning and no indecision region, this set of parameters is used in KNORAE and KNORAU. For META-DES, we are using Multinomial Naive Bayes as meta-classifier, 5 output profiles to estimate the competence using a KNN with 7 neighbors to decide the region of competence. And finally, static selection, we are choosing 50\% of the base classifiers.
 
-In table \ref{mcs_dt_table} is presented the MCS algorithms using Decision Tree classifier. We can observe a better mean result using META-DES in all metrics. Considering the mean and standard deviation, the results for KNORAE, OLA, Static Selection and META-DES are very close to the same interval.
+In Table \ref{mcs_dt_table} is presented the MCS algorithms using Decision Tree classifier. We can observe a better mean result using META-DES in all metrics. Considering the mean and standard deviation, the results for KNORAE, OLA, Static Selection and META-DES are very close to the same interval.
 
-When using Perceptron as main classifier, table \ref{mcs_dt_table}, we can observe that KNORAE has the best mean results in every metric. But also, when considering the mean and standard deviation, the results are in the same range comparing KNORAE, KNORAU, OLA and Static Selection.Comparing both Decision Tree and Perceptron results in MCS, the results are very close, having 0.8665(0.0316) as F1 Score for the best Perceptron MCS (KNORAE) and 0.8741(0.0284) for the best Decision Tree MCS (META-DES), a difference of just 0.0086.
+When using Perceptron as main classifier, Table \ref{mcs_perceptron_table}, we can observe that KNORAE has the best mean results in every metric. But also, when considering the mean and standard deviation, the results are in the same range comparing KNORAE, KNORAU, OLA and Static Selection.Comparing both Decision Tree and Perceptron results in MCS, the results are very close, having 0.8665(0.0316) as F1 Score for the best Perceptron MCS (KNORAE) and 0.8741(0.0284) for the best Decision Tree MCS (META-DES), a difference of just 0.0086.
 
 \begin{table}[h!]
     \centering
