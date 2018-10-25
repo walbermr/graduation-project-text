@@ -22,37 +22,39 @@ Each classifier is evaluated with 4 different metrics, precision (equation \ref{
 
 The dataset created in this work uses the feature extractor developed by \cite{rasthofer2014machine}. The extractor creates meaningful information using the Android methods names and their real implementation in the Android API. As result, the extractor gives the method class, if has been hand annotated, and a list of features. These features are lexical, semantic and syntactic, containing information about the method name, parameters, return type, method and classes modifiers, class modifiers, if exists data flow in the method return or parameters and the required permissions.
 
-Lexical features follows the idea that the Android APIs adopt a specific coding style, described in \cite{androidcoderef}, extracting if a method name or parameter name contains certain strings can lead to the prediction of the method class. For syntactic features, the feature extractor evaluates if exists data flow inside a method using taint analysis, already discussed in Chapter \ref{background}. Finally, the semantic features are information extracted from classes modifiers, such as private, public, protected and types of variables, arguments and methods returns.
+Lexical features follows the idea that the Android APIs adopt a specific coding style, described in \cite{androidcoderef}, extracting if a method name or parameter name contains certain strings can lead to the prediction of the method class. For syntactic features, the feature extractor evaluates if exists data flow inside a method using Taint Analysis, already discussed in Chapter \ref{background}. Finally, the semantic features are information extracted from classes modifiers, such as private, public, protected and types of variables, arguments and methods returns.
 
 As result, the feature extractor gives 215 semantic, syntactic and lexical features extracted from the Android API Level 3 to Level 27, excluding APIs Level 18 and 20 which complete binaries could not be found. The features extracted consists in boolean variables represented in 12 categories, the dataset also contains the full method name and signature but is not being used in classification. The lexical features are extracted by analyzing the stream of characters from the source code, syntactic features represents the dependency of data and control for code variables and methods, semantic features consists in the types and modifiers for variables, methods and classes \cite{aho2003compilers}.
 
-\begin{figure}[h!]
+\begin{table}[hb!]
     \centering
     \renewcommand{\arraystretch}{1.8}
-    \includegraphics[width=\linewidth]{images/menthod_though_apis.png}
-    \caption{%
-    Methods through different API Levels. We can observe in yellow the feature "Method modifier is PUBLIC" and the full method name. Even for different features values, marked in orange, the method still belongs to the sink class.%
-    }
-\end{figure}\label{menthod_though_apis}
-
-With that said, the table \ref{dset_prop} shows the proportion of each class for the dataset, first we evaluated the feature extractor using the Android API 17, same API used in \cite{rasthofer2014machine} and we could extract a total of 535 methods, consisting in 131 sinks, 88 sources and 316 neither nor. Using all the APIs found, we extracted 670 methods in total when dropping repeated entries (Dropped Entries dataset), being 176 sinks, 119 sources and 375 neither nor. It is important to observe that none of the dataset entries are duplicated, but if we look closely to the dataset, the same method can have different value of features through different APIs, as shown if figure \ref{menthod_though_apis}. So, considering method names as duplication factor (Dropped Names dataset), we end up with only 543 method, unlike the 670 for the Dropped Entries, disperse in 134 sinks, 87 sources and 322 neither nor. As different feature values consists in different entries, despite the same method name, we considered the larger dataset in order to have a bigger quantity of data to be analyzed, so we only dropped entries that are really duplicated. Sometimes the feature extractor could not infer syntactic features for a method, these entries are also removed from the dataset to keep the dataset integrity.
-
-\begin{table}[h!]
-    \centering
-    \renewcommand{\arraystretch}{1.8}
-    \begin{tabular}{ |p{3cm}|p{2.5cm}p{2.5cm}p{2.5cm}p{2cm}| }
-        \hline
+    \begin{tabular}{ p{3cm}p{2.5cm}p{2.5cm}p{2.5cm}p{2cm} }
+        \toprule
         API & Source & Sink & Neithernor & Total\\
-        \hline
+        \midrule
         API Level 17 & 316 (59.07) & 131 (24.49) & 88 (16.45) & 535 (100)\\
         Dropped Names & 322 (59.30) & 134 (24.68) & 87 (16.02) & 543 (100)\\
         Dropped Entries & 375 (55.97) & 176 (26.27) & 119 (17.76) & 670 (100)\\ [1ex]
-        \hline
+        \bottomrule
         \end{tabular}
         \caption{%
         Overview of the generated dataset, Support(Percentage). First, the proportion for API Level 17, second, the dataset without duplicated method names (Dropped Names) and finally, the final dataset without duplicated entries (Dropped Entries).%
         }\label{dset_prop}
 \end{table}
+
+With that said, the Table \ref{dset_prop} shows the proportion of each class for the dataset, first we evaluate the feature extractor using the Android API 17, same API used in \cite{rasthofer2014machine} and we could extract a total of 535 methods, consisting in 131 sinks, 88 sources and 316 neither nor. Using all the APIs found, we extracted 670 methods in total when dropping repeated entries (Dropped Entries dataset), being 176 sinks, 119 sources and 375 neither nor. It is important to observe that none of the dataset entries are duplicated, but if we look closely to the dataset, the same method can have different value of features through different APIs, as shown if Figure \ref{menthod_though_apis}. So, considering method names as duplication factor (Dropped Names dataset), we end up with only 543 method, unlike the 670 for the Dropped Entries, disperse in 134 sinks, 87 sources and 322 neither nor. As different feature values consists in different entries, despite the same method name, we considered the larger dataset in order to have a bigger quantity of data to be analyzed, so we only dropped entries that are really duplicated. Sometimes the feature extractor could not infer syntactic features for a method, these entries are also removed from the dataset to keep the dataset integrity.
+
+As default dataset for the evaluation, this work will use the dataset with dropped repeated entries, this dataset have more information to be learned and already guarantee the division in train and test to be disjoint as have no repetition.
+
+\begin{figure}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.8}
+    \includegraphics[width=0.9\linewidth]{images/menthod_though_apis.png}
+    \caption{%
+    Methods through different API Levels. We can observe in yellow the feature "Method modifier is PUBLIC" and the full method name. Even for different features values, marked in green, the method still belongs to the sink class.%
+    }
+\end{figure}\label{menthod_though_apis}
 
 \input{chapters/results/monolithic}
 \input{chapters/results/mcs}

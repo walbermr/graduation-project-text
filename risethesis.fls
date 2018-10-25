@@ -539,19 +539,19 @@ INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmmi10.tfm
 INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/zptmcm7y.vf
 INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmsy10.tfm
 INPUT C:/Users/walbe/AppData/Local/MiKTeX/2.9/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8t.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8t.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmb8t.vf
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmr8t.vf
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT images/menthod_though_apis.png
 INPUT ./images/menthod_though_apis.png
 INPUT ./images/menthod_though_apis.png
 INPUT ./images/menthod_though_apis.png
 INPUT ./images/menthod_though_apis.png
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8t.tfm
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8t.tfm
 INPUT chapters/results/monolithic.tex
 INPUT chapters/results/monolithic.tex
-INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmb8t.vf
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmr8t.vf
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT chapters/results/mcs.tex
 INPUT chapters/results/mcs.tex
 INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/zptmcm7t.tfm
