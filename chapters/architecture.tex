@@ -1,0 +1,24 @@
+\chapter{Architecture}
+
+The system architecture is shown in figure \ref{figure:flow}, a collection of Android APIs has been selected from two different repositories: the default repository of images used by \cite{rasthofer2014machine} and other repository is commonly used by mobile developers that need methods, which are only available in APIs that have been extracted from real devices. The APIs from level 3 to 17 used in this work were extracted from \cite{rasthofer2014api} and the APIs 17, 19 and 21 to 27 gathered from \cite{hiddenapi}. These two APIs repositories meet the requirement imposed by \cite{rasthofer2014machine} that the APIs used need to have the fully method implementation, this is done by extracting APIs from real devices.
+
+Considering if the extraction is done using an emulator, the API extracted comes with methods stubs, which are the Android methods without implementation. As long as you try to execute any of these methods, an exception is thrown and the execution is stopped. Those methods are important due to information tracking that is done during the feature extraction, if a API method calls another method that is a source of sensitive data, the method potentially be a source of data too. Another point is that some of syntactic features are extracted from data flow inside those methods, if no method implementation were given, those features could not be computed.
+
+In addition to the APIs, it is necessary to have a small starting list of Android methods that have been hand classified, called hand annotated. With the methods and APIs in hand, the following step is to apply the feature extractor to each API, concatenate all the results and remove all the repeated entries.The feature extractor will use the hand annotated methods and the API to generate the methods features and if possible, infer the classes of non annotated methods using static taint analysis. The result of this step is the dataset used in the classification and is described in more details in Section \ref{dset_section}.
+
+After the dataset creation, 30 other datasets are randomly sampled from the original with the objective to train and evaluate the classification algorithms. Each of these datasets are subdivided into train dataset and test dataset, containing 80\% of the original dataset to train the model and 20\% for test the model effectiveness. This is a random division done in such a way that the resultant datasets maintain the classes proportion observed in the original, if the original has 45\% of source methods, the train and test must have a proportion close to that. The datasets are created by random sample of the original one, the algorithm calculates the classes proportion and randomly selects entries to be used in train and test keeping the proportion close to the original one.
+
+Each of the 30 datasets consists in an evaluation step, and after one step, the model is overwritten and a fresh one is used, forgetting all the information previously learned. In the evaluation step, the model is evaluated using precision, recall, F1 score and accuracy, these metrics are saved and at the end of all 30 steps, the mean and standard deviation is calculated and reported in the results, Section \ref{result_ending}.
+
+
+\begin{figure}[!h]
+    \begin{center}
+        \input{proposal/flow.tex}
+    \end{center}
+    \caption{%
+        Overview of the proposed evaluation flow. First, the feature extractor uses Android Methods and %
+        Android APIs to create a dataset, which will be sampled into other 30 different datasets that will be used %
+        to evaluate the Classifiers.%
+    }\label{figure:flow}
+\end{figure}
+

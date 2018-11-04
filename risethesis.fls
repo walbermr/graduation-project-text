@@ -135,6 +135,8 @@ INPUT F:/Program Files/MiKTeX 2.9/tex/latex/xcolor/xcolor.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/xcolor/xcolor.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/graphics-cfg/color.cfg
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/graphics-cfg/color.cfg
+INPUT F:/Program Files/MiKTeX 2.9/tex/latex/tools/longtable.sty
+INPUT F:/Program Files/MiKTeX 2.9/tex/latex/tools/longtable.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/microtype/microtype.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/microtype/microtype.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/microtype/microtype-pdftex.def
@@ -172,6 +174,8 @@ INPUT F:/Program Files/MiKTeX 2.9/tex/latex/caption/caption.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/caption/caption.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/caption/caption3.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/caption/caption3.sty
+INPUT F:/Program Files/MiKTeX 2.9/tex/latex/caption/ltcaption.sty
+INPUT F:/Program Files/MiKTeX 2.9/tex/latex/caption/ltcaption.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/lipsum/lipsum.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/lipsum/lipsum.sty
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/sectsty/sectsty.sty
@@ -341,10 +345,14 @@ INPUT chapters/background.aux
 INPUT chapters/background.aux
 INPUT chapters/models/intro.aux
 INPUT chapters/models/intro.aux
+INPUT chapters/architecture.aux
+INPUT chapters/architecture.aux
 INPUT chapters/results.aux
 INPUT chapters/results.aux
 INPUT chapters/conclusion.aux
 INPUT chapters/conclusion.aux
+INPUT appendix/table-features.aux
+INPUT appendix/table-features.aux
 OUTPUT risethesis.aux
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/base/ts1cmr.fd
 INPUT F:/Program Files/MiKTeX 2.9/tex/latex/base/ts1cmr.fd
@@ -527,6 +535,20 @@ INPUT chapters/models/dcs/singlebest.tex
 INPUT chapters/models/dcs/singlebest.tex
 INPUT chapters/models/dcs/staticselection.tex
 INPUT chapters/models/dcs/staticselection.tex
+OUTPUT chapters/architecture.aux
+INPUT chapters/architecture.tex
+INPUT chapters/architecture.tex
+INPUT proposal/flow.tex
+INPUT proposal/flow.tex
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8t.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8t.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/zptmcm7y.vf
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmsy10.tfm
+INPUT C:/Users/walbe/AppData/Local/MiKTeX/2.9/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmb8t.vf
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmr8t.vf
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8r.tfm
 OUTPUT chapters/results.aux
 INPUT chapters/results.tex
 INPUT chapters/results.tex
@@ -536,15 +558,6 @@ INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/helvetic/phvr8t.tfm
 INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/zptmcm7m.vf
 INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/psyro.tfm
 INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmmi10.tfm
-INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/zptmcm7y.vf
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmsy10.tfm
-INPUT C:/Users/walbe/AppData/Local/MiKTeX/2.9/fonts/tfm/public/rsfs/rsfs10.tfm
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8t.tfm
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8t.tfm
-INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmb8t.vf
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmr8t.vf
-INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT images/menthod_though_apis.png
 INPUT ./images/menthod_though_apis.png
 INPUT ./images/menthod_though_apis.png
@@ -554,6 +567,10 @@ INPUT chapters/results/monolithic.tex
 INPUT chapters/results/monolithic.tex
 INPUT chapters/results/mcs.tex
 INPUT chapters/results/mcs.tex
+INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/zptmcm7m.vf
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/psyro.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmmi10.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/zptmcm7t.tfm
 INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/zptmcm7t.tfm
 INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/zptmcm7m.tfm
@@ -586,6 +603,13 @@ INPUT chapters/conclusion.tex
 INPUT chapters/conclusion.tex
 INPUT risethesis.bbl
 INPUT risethesis.bbl
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8t.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8t.tfm
+INPUT F:/Program Files/MiKTeX 2.9/fonts/vf/adobe/times/ptmb8t.vf
+INPUT F:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8r.tfm
+OUTPUT appendix/table-features.aux
+INPUT appendix/table-features.tex
+INPUT appendix/table-features.tex
 INPUT risethesis.aux
 INPUT chapters/introduction.aux
 INPUT chapters/introduction.aux
@@ -593,10 +617,14 @@ INPUT chapters/background.aux
 INPUT chapters/background.aux
 INPUT chapters/models/intro.aux
 INPUT chapters/models/intro.aux
+INPUT chapters/architecture.aux
+INPUT chapters/architecture.aux
 INPUT chapters/results.aux
 INPUT chapters/results.aux
 INPUT chapters/conclusion.aux
 INPUT chapters/conclusion.aux
+INPUT appendix/table-features.aux
+INPUT appendix/table-features.aux
 INPUT ./risethesis.out
 INPUT ./risethesis.out
 INPUT F:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
