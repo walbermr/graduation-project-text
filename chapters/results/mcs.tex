@@ -4,7 +4,7 @@ For the Multiple Classifier System we used KNORAE, KNORAU, META-DES, OLA, Single
 
 The base classifier classes used are Perceptron and Decision Tree, in all ensemble algorithms we use the same base classifier configuration. For Perceptron we used no regularization, no early stopping, max of 1000 iterations and tolerance of $10^{-1}$. For Decision Tree, the split strategy is to select the most relevant feature with Gini Impurity as criterion. For ensemble algorithms, the KNORAE and KNORAU parameters were KNN to estimate the classifier competence using 7 neighbors, with no dynamic pruning and no indecision region. For META-DES, we are using Multinomial Naive Bayes as meta-classifier, 5 output profiles to estimate the competence using a KNN with 7 neighbors to decide the region of competence. And finally, static selection, we are choosing 50\% of the base classifiers. All parameters can be seen in Table \ref{table:mcs_params}.
 
-\begin{table}[h!]
+\begin{table}[ht]
     \centering
     \renewcommand{\arraystretch}{1.8}
     \begin{tabular}{ p{5cm}p{3cm}|p{3cm}|p{3cm} }
@@ -24,11 +24,11 @@ The base classifier classes used are Perceptron and Decision Tree, in all ensemb
         }\label{table:mcs_params}
 \end{table}
 
-In Table \ref{mcs_dt_table} is presented the MCS algorithms using Decision Tree classifier. We can observe a better mean result using META-DES in all metrics. Considering the mean and standard deviation, the results for KNORAE, OLA, Static Selection and META-DES are very close to the same interval.
+In Table \ref{mcs_dt_table} is presented the MCS algorithms using Decision Tree classifier. We can observe a better mean result using META-DES in all metrics, except when comparing the Accuracy with KNORAE. Considering the mean and standard deviation, the results for KNORAE, KNORAU, OLA, Static Selection and META-DES are very close to the same interval. But we can observe that there is a bigger gap between OLA and Static Selection, and KNORAE, KNORAU and META-DES in Precision, Recall and F1. Comparing the Accuracy there is a smaller gap.
 
-When using Perceptron as main classifier, Table \ref{mcs_perceptron_table}, we can observe that KNORAE and META-DES have the best mean results, META-DES has better Precision ad Accuracy and KNORAE has better Recall and F1 Score. But also, when considering the mean and standard deviation, the results are in the same range comparing KNORAE, KNORAU, OLA and Static Selection.Comparing both Decision Tree and Perceptron results in MCS, the results are very close, having 0.8665(0.0316) as F1 Score for the best Perceptron MCS (KNORAE) and 0.8741(0.0284) for the best Decision Tree MCS (META-DES), a difference of just 0.0086.
 
-\begin{table}[h!]
+
+\begin{table}[!h]
     \centering
     \renewcommand{\arraystretch}{1.8}
     \begin{tabular}{ p{3cm}p{2.8cm}p{2.8cm}p{2.8cm}p{2.8cm} }
@@ -48,7 +48,7 @@ When using Perceptron as main classifier, Table \ref{mcs_perceptron_table}, we c
         }\label{mcs_dt_table}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[!h]
     \centering
     \renewcommand{\arraystretch}{1.8}
     \begin{tabular}{ p{3cm}p{2.8cm}p{2.8cm}p{2.8cm}p{2.8cm} }
@@ -67,3 +67,7 @@ When using Perceptron as main classifier, Table \ref{mcs_perceptron_table}, we c
         Result for Multiple Classifier System, Mean (Standard Deviation), using Perceptron as main classifier using no regularization, no early stopping, max of 1000 iterations and tolerance of $10^{-1}$. The best classifier for each metric is highlighted in bold%
         }\label{mcs_perceptron_table}
 \end{table}
+
+When using Perceptron as main classifier, Table \ref{mcs_perceptron_table}, we can observe that KNORAE have the best mean results in Recall, F1 and Accuracy but META-DES has a better Precision. When considering mean and standard deviation, the results of KNORAE, KNORAU, META-DES, Static Selection and OLA are in the same interval for all the metrics. The difference between KNORAE and META-DES is smaller in Precision, F1 and Accuracy but has a smaller Recall comparing to OLA. 
+
+The results for best classifier using Decision Tree has close results to the best classifier using Perceptron. Comparing KNORAE with Perceptron and META-DES with Decision Tree, the META-DES with Decision Tree has better results in all metrics, but again the difference between both is so small that do not exceed the confidence interval.
