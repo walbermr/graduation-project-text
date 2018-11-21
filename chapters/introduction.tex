@@ -1,53 +1,46 @@
 \chapter{Introduction}
-Every program computes on either sensitive data or non-sensitive data. Sensitive is any data that can be used to 
-identify the user or any private user information, such as photos, International Mobile Equipment Identity (IMEI) 
-nd biometric data. Non-sensitive data is any dynamic information that do not identify the user, oftenly this kind 
-of information if public or shared, such as application source code.
 
-In an application, data follows a specific flow, first it is acquired from data sources and sent to data 
-sinks \citep{mccabe2003network}. Data sources, in the context of mobile and IoT devices, are defined as method 
-calls that read data from shared resources such as phone calls, screenshots, sensor polling data from ambient, 
-device identification numbers \citep{rasthofer2014machine}. Data sinks are methods calls that have at least one 
-argument, this argument is non-constant data from the source code \citep{rasthofer2014machine}. The data sink can be
-an interface to the user or system API for communication to other devices or store data \citep{viet2010specifying}.
+The expression Internet of Things is relatively new, was coined between 1997 and 2000 and consists of devices that sense or actuate in a real environment (\cite{minerva2015towards}). The number of IoT devices has already overcame the living humans on Earth and, by 2020, is estimated to exist about 20 billion of IoT devices connected to the internet (\cite{iotmarket}). It is very common that these devices have a companion app, used to control and monitor the IoT devices, these apps can be web and mobile based.
 
-Dynamic Flow Enforcement are techniques that tracks and enforces information flow during the application runtime. 
-These methods relies on Taint Analysis to track possible sensitive data flow to untrusted sinks. Taint Analysis 
-marks every sensitive data gathered from a source and every other variable that inherit any operation 
-from the tainted data, in the end, if any tainted variable is accessed by a sink method, the information has 
-leaked and the analysis gives a detailed path through which the data passed. During the tracking, there are 
-different methods to enforce in runtime that the data will not leak, \cite{fernandes2016flowfence} uses 
-virtualization to guarantee that the data will only operate in the controlled environment and \cite{sun2017data} 
-declassifying information before it is computed in trusted methods or if reach a trusted API.
+This growing popularity come along with major security and privacy issues, hackers are exploiting Android apps to leak user private information or hijacking the IoT device to use in other attacks, such as DDoS (\cite{ycraig}). The information leak is very concerning from a privacy point of view, as a vast majority of user sensitive information is stored in smartphones, GPS location, text messages, photos and even bank data can be stolen if exists an issue in IoT companion apps.
 
-Static Flow Enforcement starts by creating abstract models of the application code to provide a simpler 
-representation \citep{myers1999jflow}, using frameworks like Soot \citep{vallee2000optimizing}. Then, this model 
-will be used in control-flow, data-flow and points-to analysis to observe the application control, data sequence 
-and compute static abstractions for variables \cite{li2017static}. These methods are implemented and used in 
-DroidSafe \cite{gordon2015information}. JFlow \cite{myers1999jflow} inserts statically checked and secured code 
-when the application computes on sensitive data.
+IoT applications consists in a device that can sense and actuate in the real environment which is controlled and monitored using mobile apps or a web server to serve for any kind of purpose, from medical monitoring to smart wearable devices. Depending of the application the devices are designed to last for years with low or no need of maintenance or be portable. To ensure that these devices are hardware constrained, lacking computational power to ensure a longer battery life \cite{raj2017internet}. This leads to some issues: the needing of newer lightweight security protocols to fit the hardware constrains as \cite{zhang2014iot} points, \textit{something} and a reduced set of communications protocols to keep low power consumption.
 
-Both Static and Dynamic Flow Enforcement techniques require information of which methods is a source of sensitive 
-data and which is a data sink. This is used to identify if a sink method is truly leaking sensitive data or not. So,
-lists containing sources and sinks of sensitive data are hand created, but this solution is impractical considering 
-a huge API like the Android API \cite{rasthofer2014machine}.
+The lack of communications protocols forced the industry to create other devices to act as an IoT hub, if the IoT does not have an independent connection to the internet, hub architectures are common if the device have simpler and short communication protocols, like Bluetooth, RFID, ZigBee and NFC \cite{al2017internet}. The hub concentrate the communications between the devices and the companion app, this app is a mobile or cloud application that provides monitoring and control for the IoT devices. The real IoT communication architecture is very diverse but a device have few options, it can only send information through the hub to the cloud, to a smartphone, directly to the cloud or have these three combined using a mixed architecture.
 
-Considering that issue, Rasthofer et al. \cite{rasthofer2014machine} proposed to use machine learning to 
-automatically create a categorized list of sources and sinks methods to be used in Flow Enforcement techniques.
-The list consists in methods classified into Flow Classes and Android Method Categories. The Flow Classes are 
-source of sensitive data, or just source, and sink of data, but also, the method can be neither source or sink. For 
-Android Methods Categories, there are 12 different classes: account, Bluetooth, browser, calendar, contact, 
-database, file, network, NFC, settings, sync, a unique identifier, and no category if the method does not belong to 
-any of the previous.
+In Figure \ref{fig:arch-direct} we can observe how the IoT device communicate directly to user devices, the smart devices are represented by a smart bulb and the user devices by a smartphone and a desktop computer. The full arrows express that that the link must exist to have a connection. In Figure \ref{fig:arch-hub}, we have a intermediate device that makes the connection between the device and the user, the hub can aggregate as many IoT devices as intended. The cloud architecture Figure \ref{fig:arch-cloud} consists in a device that is connected to the internet using a router, which sends and receives user actions using the cloud as intermediary. The mixed architecture, Figure \ref{fig:arch-mixed}, can have all the previous kind of connections, the user has freedom to send information directly to the device, or use a hub to control the devices with only one application or send remote requests using any cloud provider.
 
-The authors shortly compared Decision Trees and Naive Bayes with the SVM and choosed to use SVM to create the 
-categorized list of sources and sinks, as SVM showed to be more precise in categorize the Android methods. 
+\begin{figure}[ht] 
+    \begin{minipage}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{images/iot-architectures/direct.png}
+        \caption{Direct architecture}\label{fig:arch-direct}
+        \vspace{4ex}
+    \end{minipage}%%
+    \begin{minipage}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{images/iot-architectures/hub.png}
+        \caption{Hub architecture}\label{fig:arch-hub}
+        \vspace{4ex}
+    \end{minipage} 
+    \begin{minipage}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/iot-architectures/cloud.png}
+        \caption{Cloud based architecture}\label{fig:arch-cloud}
+        \vspace{4ex}
+    \end{minipage}%% 
+    \begin{minipage}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{images/iot-architectures/mixed.png}
+        \caption{Mixed architecture}\label{fig:arch-mixed}
+        \vspace{4ex}
+    \end{minipage} 
+\end{figure}
 
-To classify, the authors utilize features extracted from the methods, like the method name, if the method has 
-parameters, the return value type, parameter type, if the parameter is an interface, method modifiers, class 
-modifiers, class name, if the method returns a value from another source method, if one parameter flows into a sink 
-method, if a method parameters flows into a abstract sink and the method required permission. 
+With the increasing popularity of IoT, attackers are exploiting weakness in the architecture, the device itself and the smartphones that hosts the application. Exists many known attacks, from leaking user data as described by \cite{ycraig} to hijacking the device to use in other attacks such as DDoS using botnets \cite{kolias2017ddos}. The information leaking is a major concern from a privacy point of view, this kind of attack can leak any kind of user sensitive data being sent to malicious hosts or unaware to a cloud server. 
 
-To categorize the methods, were used features like class name, method invocation, body contents, parameter type and 
-return value type. After that, the methods list is generated containing if it is a sink, source and the method 
-category.
+Sensitive data is any data that can be used to identify the user or any private user information, such as photos, International Mobile Equipment Identity (IMEI), biometric data, GPS localization, bank information and private messages. Non-sensitive data is any dynamic information that do not identify the user, often, this kind of information if public or shared, such as application source code.
+
+Every program computes on either sensitive data or non-sensitive data, and this data follows a specific flow, first it is acquired from data sources and sent to data sinks \citep{mccabe2003network}. Data sources, in the context of mobile and IoT devices, are defined as method calls that read data from shared resources such as phone calls, screenshots, sensor polling data from ambient, device identification numbers \citep{rasthofer2014machine}. Data sinks are methods calls that have at least one argument, this argument is non-constant data from the source code \citep{rasthofer2014machine}. The data sink can be an interface to the user or system API for communication to other devices or store data \citep{viet2010specifying}.
+
+To address the data privacy issue, mobile operating systems such as Android and IOs have a permission based system intended to control which sensitive information the application have access, like contact numbers, photos, videos and data from camera and microphone. These permissions are granted by the user at the installation or during the application usage \cite{androidpermissions}.

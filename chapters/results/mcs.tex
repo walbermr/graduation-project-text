@@ -22,11 +22,12 @@ The base classifier classes used are Perceptron and Decision Tree, in all ensemb
         \caption{%
         Parameters for Multiple Classifier System%
         }\label{table:mcs_params}
+        \vspace{4ex}
 \end{table}
 
 In Table \ref{mcs_dt_table} is presented the MCS algorithms using Decision Tree classifier. We can observe a better mean result using META-DES in all metrics, except when comparing the Accuracy with KNORAE. Considering the mean and standard deviation, the results for KNORAE, KNORAU, OLA, Static Selection and META-DES are very close to the same interval. But we can observe that there is a bigger gap between OLA and Static Selection, and KNORAE, KNORAU and META-DES in Precision, Recall and F1. Comparing the Accuracy there is a smaller gap.
 
-\begin{table}[!h]
+\begin{table}[!t]
     \centering
     \renewcommand{\arraystretch}{1.8}
     \begin{tabular}{ p{3cm}p{2.8cm}p{2.8cm}p{2.8cm}p{2.8cm} }
@@ -44,9 +45,10 @@ In Table \ref{mcs_dt_table} is presented the MCS algorithms using Decision Tree 
         \caption{%
         Result for Multiple Classifier System, Mean (Standard Deviation), using Decision Tree as main classifier with most relevant feature as split strategy and Gini Impurity as criterion. The best classifier for each metric is highlighted in bold%
         }\label{mcs_dt_table}
+        \vspace{4ex}
 \end{table}
 
-\begin{table}[!h]
+\begin{table}[!t]
     \centering
     \renewcommand{\arraystretch}{1.8}
     \begin{tabular}{ p{3cm}p{2.8cm}p{2.8cm}p{2.8cm}p{2.8cm} }
@@ -64,6 +66,7 @@ In Table \ref{mcs_dt_table} is presented the MCS algorithms using Decision Tree 
         \caption{%
         Result for Multiple Classifier System, Mean (Standard Deviation), using Perceptron as main classifier using no regularization, no early stopping, max of 1000 iterations and tolerance of $10^{-1}$. The best classifier for each metric is highlighted in bold%
         }\label{mcs_perceptron_table}
+        \vspace{4ex}
 \end{table}
 
 When using Perceptron as main classifier, Table \ref{mcs_perceptron_table}, we can observe that KNORAE have the best mean results in Recall, F1 and Accuracy but META-DES has a better Precision. When considering mean and standard deviation, the results of KNORAE, KNORAU, META-DES, Static Selection and OLA are in the same interval for all the metrics. The difference between KNORAE and META-DES is smaller in Precision, F1 and Accuracy but has a smaller Recall comparing to OLA. 
