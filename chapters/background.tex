@@ -1,18 +1,51 @@
-\chapter{Background}\label{background}
+\chapter{Background}\label{chapter:background}
 
-In this section, we will introduce the techniques used in flow analysis and the issues of having a poor list of source and sink methods to make the analysis.
+In this section, we will introduce the techniques used in flow enforcement and the issues of having a poor list of source and sink methods to make this kind of analysis.
+
+There are two ways of making a security analysis, using Static Analysis and Dynamic Analysis. Static Analysis use the application source code to extract all paths of execution and infer if there exists some kind of malicious code. Dynamic Analysis needs to execute the application to and uses the execution path in many application runs \citep{tam2017evolution}. Static and Dynamic Analysis are used to enforce information flows using rules called flow policies \citep{fernandes2016flowfence}. These flow policies can be enforced during software execution or can be used to create a issue report to developer during compilation, called Dynamic Flow Enforcement and Static Flow Enforcement respectively. Dynamic Enforcement comes with a bigger overhead to the application as the flow enforcement is done during execution.
 
 Dynamic Flow Enforcement are techniques that tracks and enforces information flow during the application runtime. These methods relies on Taint Analysis to track possible sensitive data flow to untrusted sinks. Taint Analysis marks every sensitive data gathered from a source and every other variable that inherit any operation from the tainted data, in the end, if any tainted variable is accessed by a sink method, the information has leaked and the analysis gives a detailed path through which the data passed. During the tracking, there are different methods to enforce in runtime that the data will not leak, \cite{fernandes2016flowfence} uses virtualization to guarantee that the data will only operate in the controlled environment and \cite{sun2017data} declassifying information before it is computed in trusted methods or if reach a trusted API.
 
 Static Flow Enforcement starts by creating abstract models of the application code to provide a simpler representation \citep{myers1999jflow}, using frameworks like Soot \citep{vallee2000optimizing}. Then, this model will be used in control-flow, data-flow and points-to analysis to observe the application control, data sequence and compute static abstractions for variables \cite{li2017static}. These methods are implemented and used in DroidSafe \cite{gordon2015information}. JFlow \cite{myers1999jflow} inserts statically checked and secured code when the application computes on sensitive data. There are also Static Enforcement techniques that uses taint analysis, like \cite{arzt2014flowdroid} that created a precise method of static information flow tracking using taint analysis.
 
-Both Static and Dynamic Flow Enforcement techniques require information of which methods is a source of sensitive data and which is a data sink. This is used to identify if a sink method is truly leaking sensitive data or not. So,lists containing sources and sinks of sensitive data are hand created, but this solution is impractical considering a huge API like the Android API \cite{rasthofer2014machine}.
+Some drawbacks can be seen when comparing static or dynamic analysis, the capability of detecting implicit flows and the quantity of false positives as result of these analysis. There are two ways of a information flow in the program: explicit and implicit, a explicit flow is a direct assignment of information to another variable or passing this information when calling a method. On the other hand, implicit flows are obfuscated data assignments by some control instruction like a conditional statement or loop. As the static analysis evaluates the whole source code, implicit flows can easily be detected, in contrast, the dynamic analysis can not detect that this flows exists, or, is needed to execute the code dozen of times to track all flows in the code \citep{russo2010dynamic}. In Figure \ref{figure:explicit}, we can see an explicit flow of sensitive information and later, the sensitive information will flow to a sink method. In Figure \ref{figure:implicit} we can observe also an explicit flow when assigning the sensitive information to the variable and a implicit flow, when the sensitive information flow to the sink method.
+
+\begin{figure}[ht] 
+    \centering
+    \begin{lstlisting}
+        int sensitive_data = SensitiveSource();
+        int other_data = NonSensitiveSource();
+
+        NotSinkNorSource(other_data);
+        Sink(sensitive_data);
+    \end{lstlisting}
+    \caption{Explicit information flow in the variable assignment and sink method call.}
+    \label{figure:implicit}
+    \vspace{4ex}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \begin{lstlisting}
+        int sensitive_data = SensitiveSource();
+        int other_data = NonSensitiveSource();
+
+        if(condition)
+            Sink(sensitive_data);
+
+        NotSinkNorSource(other_data);
+    \end{lstlisting}
+    \caption{Explicit information flow in the variable assignment and implicit information flow in method call.}
+    \label{figure:explicit}
+    \vspace{4ex}
+\end{figure}
+
+Both Static and Dynamic Flow Enforcement techniques requires information about which methods are sources of sensitive data and which are data sinks. This is used to identify if a sink method is truly leaking sensitive data or not, for example, a sink method can send a variable that does not have sensitive information during the method call, but during other execution, the variable can be storing sensitive data. This can be seen in two different ways when using static and dynamic analysis. So, lists containing sources and sinks of sensitive data are hand created, but this solution is impractical considering a huge API like the Android API \citep{rasthofer2014machine}.
+
+Other major issue of having a poorly created list of methods is the possibility of not tracking sensitive information, as the way to track sensitive information is based in taint every variable that operates in this kind of information, not having a complete list of sensitive data sources. In other hand, an excessive quantity of false sensitive sources and sinks can lead to a big quantity of false positives data leakage. 
 
 Considering that issue, \cite{rasthofer2014machine} proposed to use machine learning to automatically create a categorized list of sources and sinks methods to be used in Flow Enforcement techniques. The list consists in methods classified into Flow Classes and Android Method Categories. The Flow Classes are source of sensitive data, or just source, and sink of data, but also, the method can be neither source or sink. For Android Methods Categories, there are 12 different classes: account, Bluetooth, browser, calendar, contact, database, file, network, NFC, settings, sync, a unique identifier, and no category if the method does not belong to any of the previous.
 
-The authors shortly compared Decision Trees and Naive Bayes with the SVM and choosed to use SVM to create the categorized list of sources and sinks, as SVM showed to be more precise in categorize the Android methods. 
+The authors shortly compared Decision Trees and Naive Bayes with the SVM and chose to use SVM to create the categorized list of sources and sinks, as SVM showed to be more precise in categorize the Android methods. To classify, the authors utilize features extracted from the methods, like the method name, if the method has parameters, the return value type, parameter type, if the parameter is an interface, method modifiers, class modifiers, class name, if the method returns a value from another source method, if one parameter flows into a sink method, if a method parameters flows into a abstract sink and the method required permission. To categorize the methods, were used features like class name, method invocation, body contents, parameter type and return value type. After that, the methods list is generated containing if it is a sink, source and the method category.
 
-To classify, the authors utilize features extracted from the methods, like the method name, if the method has parameters, the return value type, parameter type, if the parameter is an interface, method modifiers, class modifiers, class name, if the method returns a value from another source method, if one parameter flows into a sink method, if a method parameters flows into a abstract sink and the method required permission. 
-
-To categorize the methods, were used features like class name, method invocation, body contents, parameter type and return value type. After that, the methods list is generated containing if it is a sink, source and the method category.
-
+The classification approach have already showed better results than using the list of hand classified methods, but comparing only three algorithms can be a limiting factor. In Chapter \ref{chapter:models} we introduce the classifiers used in this work, extending the original method classification concept using more classifiers, to understand if there exists better models to solve this problem.
