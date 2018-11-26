@@ -54,6 +54,7 @@ ENTRY
 	series
 	type
 	volume
+	url
 }
 {}
 {
@@ -1042,6 +1043,14 @@ FUNCTION {mastersthesis}
 	write.item
 }
 
+FUNCTION {format.url}
+{ 
+	url empty$
+    { "" }
+    { " " url * }
+	if$
+}
+
 FUNCTION {misc}
 {
 	""
@@ -1066,6 +1075,8 @@ FUNCTION {misc}
 	}{
 		format.note add.howpublished add.to.item
 	} if$
+
+	format.url add.to.item
 
 	write.item
 }
