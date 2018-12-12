@@ -4,7 +4,7 @@ In this chapter, the results are exposed in the following way: Section \ref{dset
 
 Using the dataset described in Section \ref{dset_section} other 30 different datasets have been randomly sampled that are subdivided into two: 80\% of the original dataset for model training and 20\% to test the model effectiveness. This method intends to make a Hypothesis Test, this help to statically evaluate if a classifier is really effective when applied in this dataset. After the classifiers applied to each of the 30 datasets, the mean and standard deviation of each metric are calculated and displayed in the result tables. For each classification method, both Monolithic and MCS have its setup described in Sections \ref{mono} and \ref{mcs} to ease future replications of this work. 
 
-Each classifier is evaluated with 4 different metrics, precision (equation \ref{precision}), recall (equation \ref{recall}), F1 score (equation \ref{f1}) and accuracy (equation \ref{accuracy}). The precision is the ratio of correctly predictions to the total predictions done. Accuracy is the ratio of correctly true predictions to the total of predictions. Recall is the ratio of correctly positive predictions to all the predictions of a class. F1 score represents the harmonic mean between precision and recall, which is a more meaningful metric than the mean between precision and recall \cite{sasaki2007truth}. True positives are all instances of a class $C$ that are correctly classified. True negatives are all instances that do not belong to $C$ and are correctly classified. False positives of a class $C$ are the instances of other classes that has been classified as $C$. False negatives are instances of $C$ that has been classified as not belonging to $C$.
+Each classifier is evaluated with 4 different metrics, precision (equation \ref{precision}), recall (equation \ref{recall}), F1 score (equation \ref{f1}) and accuracy (equation \ref{accuracy}), the classifier with bigger values in these metrics have the best result, they vary from 0 to 1. The precision is the ratio of correctly predictions to the total predictions done. Accuracy is the ratio of correctly true predictions to the total of predictions. Recall is the ratio of correctly positive predictions to all the predictions of a class. F1 score represents the harmonic mean between precision and recall, which is a more meaningful metric than the mean between precision and recall \cite{sasaki2007truth}. True positives are all instances of a class $C$ that are correctly classified. True negatives are all instances that do not belong to $C$ and are correctly classified. False positives of a class $C$ are the instances of other classes that has been classified as $C$. False negatives are instances of $C$ that has been classified as not belonging to $C$.
 
 \begin{multicols}{2}%
     \noindent%
@@ -29,11 +29,11 @@ As result, the feature extractor gives 215 features, consisting in 53 semantic, 
 \begin{table}[hb!]
     \centering
     \renewcommand{\arraystretch}{1.8}
-    \begin{tabular}{p{2.5cm}p{2.5cm}p{2.5cm}p{2cm} }
+    \begin{tabular}{p{2.5cm}p{2.5cm}p{2.5cm}p{2.5cm} }
         \toprule
         Source & Sink & Neithernor & Total\\
         \midrule
-        375 (55.97) & 176 (26.27) & 119 (17.76) & 670 (100)\\ [1ex]
+        375 (55.97 \%) & 176 (26.27 \%) & 119 (17.76 \%) & 670 (100 \%)\\ [1ex]
         \bottomrule
         \end{tabular}
         \caption{%

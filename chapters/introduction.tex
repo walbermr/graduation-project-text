@@ -2,7 +2,7 @@
 
 \section{Motivation}
 
-The expression Internet of Things is relatively new, was coined between 1997 and 2000 and consists of devices that sense or actuate in a real environment (\cite{minerva2015towards}). The number of IoT devices has already overcame the living humans on Earth and, by 2020, is estimated to exist about 20 billion of IoT devices connected to the internet \citep{iotmarket}. It is very common that these devices have a companion app, cloud or mobile based which are used to control and monitor the IoT devices.
+The expression Internet of Things is relatively new, was coined between 1997 and 2000 and consist of devices that sense or actuate in a real environment (\cite{minerva2015towards}). The number of IoT devices has already overcame the living humans on Earth and, by 2020, is estimated to exist about 20 billion of IoT devices connected to the internet \citep{iotmarket}. It is very common that these devices have a companion app, cloud or mobile based which are used to control and monitor the IoT devices.
 
 This growing popularity come along with major security and privacy issues, hackers are exploiting Android apps to leak user private information or hijacking the IoT device to use in other attacks, such as DDoS \citep{ycraig}. The information leak is very concerning from a privacy point of view, as a vast majority of user sensitive information is stored in smartphones, GPS location, text messages, photos and even bank data can be stolen if exists an issue in IoT companion apps.
 
@@ -52,9 +52,9 @@ Another issue created when using the permission system is the abuse of privilege
 
 \section{Objective}\label{section:background}
 
-This work has two main objectives: generate a public database containing methods from Android APIs and evaluate the performance of the most used classification algorithms on this database. The methods should be classified into source or sink of sensitive information, or neithernor.
+This work has two main objectives: generate a public database containing methods from Android APIs and evaluate the performance of the state of the art classification algorithms on this database. The methods should be classified into source or sink of sensitive information, or neithernor.
 
-The motivation behind the database creation comes when \cite{rasthofer2014machine} developed the initial classification work. Their objective were create a machine-learning solution to identify sources and sink methods from the code of any Android API. So, every time that you wanted to test other classification algorithms, you had  to extract the methods and features at every execution. Then, create a public database extract knowledge and  develop better solutions to this problem is very likely.
+The motivation behind the database creation comes when \cite{rasthofer2014machine} developed the initial classification work. Their objective were create a machine-learning solution to identify sources and sink methods from the code of any Android API. So, every time that you wanted to test other classification algorithms, you had to extract the methods and features if you evaluate in other API. This implies in extracting the API from a real Android device, which can be tricky if the person does not have this specific knowledge. Then, create a public database extract knowledge and develop better solutions to this problem is very likely.
 
 The objective of evaluate different classification algorithms comes as \cite{rasthofer2014machine} shows results  for only three classification algorithms, SVM, Decision Tree and Naive Bayes. From that, emerged the question if other classification algorithms have better results in this database. So, the second objective is to evaluate the most used classifiers in the literature, SVM, Naive Bayes, Decision Trees, MLP, KNN, including ensemble classifications methods.
 
