@@ -858,17 +858,16 @@ FUNCTION {format.publication}
 	""
 	address empty$
 		{
-			"[S.l."
 			format.publisher empty$
-				{":~s.n.]" *}
-				{"]: " format.publisher * *}
+				{""}
+				{format.publisher}
 			if$ add.year add.to.item
 		}
 		{
 			format.address
 			format.publisher empty$
-				{": [s.n.]" *}
-				{": " format.publisher * *}
+				{""}
+				{format.publisher}
 			if$ add.year add.to.item
 		}
 	if$
@@ -877,7 +876,7 @@ FUNCTION {format.publication}
 FUNCTION {format.proceedings.publication}
 {
 	publisher empty$
-		{"[S.l.:~s.n.]"}
+		{""}
 		{publisher comma.to.colon}
 	if$ add.year
 }
@@ -922,7 +921,7 @@ FUNCTION {format.complementary.data.with.page.range}
 FUNCTION {format.proceedings.booktitle}
 {
 	process.proceedings.booktitle "" swap$ add.address add.to.item
-	swap$ "{\ldots}" * emphasize " " swap$ * *
+	swap$ "" * emphasize " " swap$ * *
 }
 
 %==============================================================================
@@ -935,7 +934,7 @@ FUNCTION {article}
 	#0 title format.title add.to.item
 	journal emphasize
 		address empty$ {
-			"[S.l.]" add.to.list
+			"" add.to.list
 		}{
 			add.address
 		} if$
